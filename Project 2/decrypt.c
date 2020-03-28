@@ -36,7 +36,7 @@ decrypt(int key)
 
   // ciphertext has xtra 4 bytes (size) and padding 
 printf("%d",size);	
-  stat("output", &st); fsize = 1048576;//st.st_size; // get ciphertext size
+  stat("output", &st); fsize = st.st_size; // get ciphertext size
   if ((fsize < 8)||(size>fsize)||(size<(fsize-8))) {printf("file size sanity check failed\n");}; 
 
   outfile = open ("output-dec", O_RDWR|O_CREAT|O_TRUNC, 0700);
@@ -64,6 +64,5 @@ main(int argc, char *argv[])
   int key;
 
   sscanf(argv[1], "%x", &key); 
-//  printf("%x\n", key);
   decrypt (key);
 };
