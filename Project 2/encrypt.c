@@ -25,9 +25,9 @@ encrypt(char *name)
   outfile = open ("output", O_RDWR|O_CREAT|O_TRUNC, 0700);
   if (outfile<0) { printf("Cannot access file: output\n"); exit(0); }
   
-  //stat(name, &st); size = 1048576;//st.st_size;
-  //if (size <4) {printf("input file too small\n"); exit(0);}; 
-  //write(outfile,&size,4); // write input file size to output  //commented on 29th Oct 2019 extra 4 bytes of data in the output file remove it
+  stat(name, &st); size = st.st_size;
+  if (size <4) {printf("input file too small\n"); exit(0);}; 
+  write(outfile,&size,4); // write input file size to output  //commented on 29th Oct 2019 extra 4 bytes of data in the output file remove it
   
   // do the encryption, buf contains plaintext, and rollingkey contains key
   buf = 0;
@@ -59,7 +59,7 @@ main(int argc, char *argv[])
 {
  if (argc!= 2) {printf("Usage: %s <filename>\n", argv[0]); exit(0);};
  
- key = 12345;//mykeygen(); // generate encryption key
+ key = mykeygen(); // generate encryption key
  printf ("key: %x  <needed for decryption>\n", key);
 
  encrypt(argv[1]); // encrypt input file and place in "output"
