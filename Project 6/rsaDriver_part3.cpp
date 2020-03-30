@@ -16,7 +16,7 @@ void Part1()
   std::cout << "10 instances with no arguments" << std::endl;
   for (int i = 1; i <= 10; i++)
   {
-    RSA myRSA;
+    RSA myRSA;  //Its public-key cryptosystems and is widely used for data transmission
     BigInt message, cipher; // deciphered;
 
     message = int(((double)std::rand() / RAND_MAX) * RAND_LIMIT32);
@@ -100,7 +100,7 @@ BigInt SendDecryptedToAlice(BigInt decrypt_message, BigInt random_number_inverse
 
 int main(int argc, char *argv[])
 { 
-  Part1();
+  //Part1();
   //Part2();
   unsigned long int *a;
   unsigned long int arr[4];
