@@ -3,23 +3,19 @@
 /**
  * Hello
  */
-public class Hello {
+public class Project1 {
 
     public static String padLeftZeros(String str, int n) {
         return String.format("%1$" + n + "s", str).replace(' ', '0');
     }
 
     public static void main(String[] args) {
-        // System.out.println("Key: ffffffff");
-        // System.out.println("Encrytion Time (in ms):32");
-        // System.out.println("Brute Force(in ms):3090117");
         long startTime = System.currentTimeMillis();
-        char[] arr = new char[] { '1', '2', 'a', 'b', '5', 'd', 'c', '4' };
-        char[] arr_rep = new char[arr.length];
-        char[] arr_rep2 = new char[arr.length];
+        char[] arr = new char[] { '1', '2', 'a', 'b', '5', 'd', 'c', '4' }; //32 bit long message
+        char[] arr_rep = new char[arr.length];  //used for shuffling
+        char[] arr_rep2 = new char[arr.length]; //used for shuffling
         String plaintext = new String(arr);
-        //System.out.println(plaintext);
-        String hex = "1111";//"12a24b21";
+        String hex = "1111";//"12a24b21";   //key
         hex = padLeftZeros(hex, 8);
         System.out.println("Key: "+hex);
         char[] key = hex.toCharArray();
